@@ -63,6 +63,7 @@
           <li><a class="nav-link" href="#services">Services</a></li>
           <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link" href="#contact">Contact</a></li>
+           <li><a class="nav-link" href="#instagram">Instagram Post</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -382,7 +383,7 @@
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">AI</li>
             <li data-filter=".filter-card">Web Development</li>
-            <li data-filter=".filter-web">Certificate</li>
+            <li data-filter=".filter-web" onclick="myFunction()">Instagram Post</li>
           </ul>
         </div>
       </div>
@@ -524,6 +525,16 @@
  -->
     </div>
   </section><!-- End Contact Section -->
+<!--  instagram post -->
+   <section id="instagram" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <script  src="https://www.juicer.io/embed/ul_ti_mate/embed-code.js"></script>
+       
+      </div>
+    </div>
+  </section><!-- End Contact Section -->
 
   <div class="credits">
     <!-- All the links in the footer should remain intact. -->
@@ -569,7 +580,10 @@
 <noscript><a href="https://www.livechat.com/chat-with/18317136/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
 <!-- End of LiveChat code -->
 
-        <script type="text/javascript" src="https://www.juicer.io/embed/ul_ti_mate/embed-code.js" async defer></script>
+        <script>
+function myFunction() {
+  document.getElementById("instagram");
+}
 
 
 </body>
