@@ -12,35 +12,99 @@
   <link rel="icon" type="image/x-icon" href="asset/img/portfolio/utm.png">
   <meta name="seobility" content="b1e8d87c24ce24a3770c0c35c01cc54c">
   
-  <!-- Favicons -->
-  <!-- <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="external/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   
-  <!-- Enhanced Custom CSS -->
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
+
+  <!-- Custom CSS -->
   <style>
-    /* Enhanced Header Styles */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      color: var(--dark-color);
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      color: var(--secondary-color);
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-title p {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    /* Header Styles */
     #header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--gradient);
       min-height: 100vh;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
+      color: white;
     }
     
     #header::before {
@@ -52,12 +116,16 @@
       z-index: 1;
     }
     
-    .intro_tagline {
+    .header-container {
       position: relative;
       z-index: 2;
-      color: white;
+      text-align: center;
+    }
+    
+    .intro_tagline {
       font-size: 1.5rem;
       line-height: 1.6;
+      margin-bottom: 30px;
     }
     
     .myname {
@@ -100,15 +168,32 @@
       }
     }
     
-    /* Enhanced Navigation */
+    /* Navigation */
     .navbar {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       left: 0;
       z-index: 9999;
       padding: 20px 0;
       transition: all 0.5s;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .navbar ul li {
+      margin: 0 10px;
     }
     
     .navbar ul li a {
@@ -125,7 +210,25 @@
       color: #fff;
     }
     
-    /* Enhanced Social Links */
+    .mobile-nav-toggle {
+      display: none;
+      position: fixed;
+      right: 15px;
+      top: 15px;
+      z-index: 9999;
+      border: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Social Links */
     .social-links {
       position: absolute;
       bottom: 30px;
@@ -152,22 +255,74 @@
       transform: translateY(-3px);
     }
     
-    /* Enhanced About Section */
+    /* About Section */
     .about {
       padding: 80px 0;
+      background: #f8f9fa;
     }
     
     .about-me img {
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 350px;
     }
     
     .about-me img:hover {
       transform: scale(1.02);
     }
     
-    /* Enhanced Skills Section */
+    .about-content h3 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+    
+    /* Counts */
+    .counts {
+      padding: 30px 0;
+    }
+    
+    .count-box {
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .count-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .count-box i {
+      font-size: 42px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .count-box span {
+      font-size: 36px;
+      font-weight: 700;
+      display: block;
+      color: var(--secondary-color);
+    }
+    
+    .count-box p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+    
+    /* Skills */
+    .skills {
+      padding: 80px 0;
+    }
+    
     .skills .progress {
       height: 10px;
       margin-bottom: 20px;
@@ -177,10 +332,119 @@
     
     .skills .progress-bar {
       border-radius: 10px;
-      background: linear-gradient(45deg, #667eea, #764ba2);
+      background: var(--gradient);
     }
     
-    /* Enhanced Portfolio Section */
+    .skill {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    
+    /* Resume */
+    .resume {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+    
+    .resume-item {
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .resume-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .resume-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+    }
+    
+    /* Services */
+    .services {
+      padding: 80px 0;
+    }
+    
+    .icon-box {
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .icon-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .icon-box .icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    
+    .icon-box .icon i {
+      font-size: 28px;
+      color: white;
+    }
+    
+    .icon-box h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    /* Portfolio */
+    .portfolio {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+    
+    #portfolio-flters {
+      padding: 0;
+      margin: 0 0 35px 0;
+      list-style: none;
+      text-align: center;
+    }
+    
+    #portfolio-flters li {
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--dark-color);
+      margin: 0 5px 10px 0;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+    }
+    
+    #portfolio-flters li:hover, 
+    #portfolio-flters li.filter-active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
     .portfolio-item {
       margin-bottom: 30px;
       transition: transform 0.3s ease;
@@ -194,9 +458,41 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
     
-    /* Enhanced Contact Section */
+    .portfolio-wrap img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-wrap:hover img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      color: white;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-wrap:hover .portfolio-info {
+      transform: translateY(0);
+    }
+    
+    /* Contact */
+    .contact {
+      padding: 80px 0;
+    }
+    
     .info-box {
       padding: 30px;
       border-radius: 10px;
@@ -204,6 +500,7 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
       height: 100%;
+      text-align: center;
     }
     
     .info-box:hover {
@@ -211,40 +508,129 @@
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
     
-    /* Responsive improvements */
-    @media (max-width: 768px) {
+    .info-box i {
+      font-size: 36px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .info-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    /* Instagram Section */
+    .instagram-section {
+      padding: 80px 0;
+      background: #f8f9fa;
+    }
+    
+    /* Footer */
+    .credits {
+      text-align: center;
+      padding: 20px;
+      background: var(--dark-color);
+      color: white;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
       .myname {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
       
       .item {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
       
       .social-links {
-        left: 20px;
+        left: 30px;
         bottom: 20px;
       }
     }
+    
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      
+      .navbar ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      
+      .navbar ul.show {
+        display: flex;
+      }
+      
+      .navbar ul li {
+        margin: 15px 0;
+      }
+      
+      .myname {
+        font-size: 2.2rem;
+      }
+      
+      .item {
+        font-size: 1.3rem;
+      }
+      
+      .social-links {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      
+      .section-title h2 {
+        font-size: 28px;
+      }
+      
+      .about-content {
+        margin-top: 30px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .myname {
+        font-size: 1.8rem;
+      }
+      
+      .item {
+        font-size: 1.1rem;
+      }
+      
+      .intro_tagline {
+        font-size: 1.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 24px;
+      }
+      
+      .count-box, .icon-box, .info-box, .resume-item {
+        padding: 20px 15px;
+      }
+    }
   </style>
-  
-   <!-- Google tag (gtag.js) --> 
-   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-607269915"></script> 
-   <script> 
-     window.dataLayer = window.dataLayer || []; 
-     function gtag(){dataLayer.push(arguments);} 
-     gtag('js', new Date()); 
-     gtag('config', 'AW-607269915'); 
-   </script>
-
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
   <header id="header">
-    <div class="container">
-
+    <div class="container header-container">
       <h2 class="intro_tagline">
         <span>Hello, I'm</span>
         <div class="myname">Emmanuel Oni</div>
@@ -262,19 +648,6 @@
         </div>
       </h2>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#resume">Resume</a></li>
-          <li><a class="nav-link" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-          <li><a class="nav-link" href="#instagram">Social Media</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
       <div class="social-links">
         <a href="https://www.x.com/emmanueljesufe2" class="twitter" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter"></i></a>
         <a href="https://www.facebook.com/profile.php?id=100070776412106" class="facebook" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
@@ -282,89 +655,607 @@
         <a href="https://www.linkedin.com/in/emmanueljesufemioni" class="linkedin" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
         <a href="https://github.com/username2512" class="github" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i></a>
       </div>
-
     </div>
   </header><!-- End Header -->
 
-  <!-- Rest of your HTML content remains the same -->
+  <!-- ======= Navigation ======= -->
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a class="nav-link active" href="#header">Home</a></li>
+      <li><a class="nav-link" href="#about">About</a></li>
+      <li><a class="nav-link" href="#resume">Resume</a></li>
+      <li><a class="nav-link" href="#services">Services</a></li>
+      <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+      <li><a class="nav-link" href="#contact">Contact</a></li>
+      <li><a class="nav-link" href="#instagram">Social Media</a></li>
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav><!-- End Navigation -->
+
   <!-- ======= About Section ======= -->
   <section id="about" class="about">
-    <!-- ... existing about content ... -->
-  </section>
+    <div class="container">
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Learn more about me</p>
+      </div>
+
+      <div class="row about-me">
+        <div class="col-lg-4 text-center">
+          <img src="https://via.placeholder.com/350x450/667eea/ffffff?text=Emmanuel+Oni" class="img-fluid" alt="Emmanuel Jesufemi Oni Picture">
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 about-content">
+          <h3>Web Developer | Web Designer | Data Analyst</h3>
+          <p class="fst-italic">
+            Highly motivated and experienced tech professional with five years of expertise in developing innovative solutions, designing scalable systems, and collaborating with cross-functional teams.
+          </p>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>15 May 1995</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+234 902 9557 005</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Kwara State, NG</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>29</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>HND Computer Science</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>oniemmanueljesufemi@gmail.com</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+              </ul>
+            </div>
+          </div>
+          <p>
+            I am passionate about creating digital solutions that solve real-world problems. With expertise in both front-end and back-end development, I build responsive, user-friendly websites and applications that deliver exceptional user experiences.
+          </p>
+        </div>
+      </div>
+
+      <!-- Counts Section -->
+      <div class="counts container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter">232</span>
+              <p>Happy Clients</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter">521</span>
+              <p>Projects</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter">1463</span>
+              <p>Hours Of Support</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter">24</span>
+              <p>Awards</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="skills container mt-5">
+        <div class="section-title">
+          <h2>Skills</h2>
+        </div>
+
+        <div class="row skills-content">
+          <div class="col-lg-6">
+            <div class="skill">
+              <span>HTML</span>
+              <span>100%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>CSS</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>JavaScript</span>
+              <span>80%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>Python</span>
+              <span>75%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="skill">
+              <span>PHP</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>WordPress/CMS</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>Photoshop</span>
+              <span>55%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="skill">
+              <span>Scrum Master</span>
+              <span>55%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End About Section -->
 
   <!-- ======= Resume Section ======= -->
   <section id="resume" class="resume">
-    <!-- ... existing resume content ... -->
-  </section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>Check My Resume</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="resume-title">Summary</h3>
+          <div class="resume-item pb-0">
+            <h4>Emmanuel Oni</h4>
+            <p><em>Innovative and deadline-driven Web Developer with 5+ years of experience designing and developing user-centered digital solutions from initial concept to final, polished deliverable.</em></p>
+            <ul>
+              <li>Kwara State, NG</li>
+              <li>(234) 902 9557 005 | (234) 906 1594 303</li>
+              <li>oniemmanueljesufemi@gmail.com</li>
+            </ul>
+          </div>
+
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-item">
+            <h4>Elementary | Primary School</h4>
+            <h5>2002 - 2009</h5>
+            <p><em>Police Children School 1 Akure, Ondo State. NG.</em></p>
+          </div>
+          <div class="resume-item">
+            <h4>Secondary School Leaving Certificate (SSCE)</h4>
+            <h5>2009 - 2015</h5>
+            <p><em>Saint Thomas Aquinas College Akure, Ondo State. NG.</em></p>
+          </div>
+          <div class="resume-item">
+            <h4>Computer Science (Associate Degree | National Degree)</h4>
+            <h5>2017 - 2019</h5>
+            <p><em>Federal College Of Agriculture Akure, Ondo State. NG.</em></p>
+          </div>
+          <div class="resume-item">
+            <h4>Computer Science (Associate Degree | Higher National Degree)</h4>
+            <h5>2021 - 2023</h5>
+            <p><em>Kwara State Polytechnic, Ilorin Kwara State. NG</em></p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="resume-title">Professional Experience</h3>
+          <div class="resume-item">
+            <h4>National Youth Service Corps</h4>
+            <h5>2023 - 2024</h5>
+            <p><em>Various Locations, Nigeria</em></p>
+            <p>
+            <ul>
+              <li>Participated in community development projects</li>
+              <li>Provided technical support and training to local organizations</li>
+              <li>Developed digital solutions for community challenges</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>Technical Officer | Programmer</h4>
+            <h5>2019 - Present</h5>
+            <p><em>Ultimate Technology, Akure, Ondo State. NG.</em></p>
+            <p>
+            <ul>
+              <li>Led development of web applications and digital solutions</li>
+              <li>Improved customer satisfaction through user-centric design</li>
+              <li>Managed complex technology projects from initiation to completion</li>
+              <li>Supervised assessment of all graphic materials for quality and accuracy</li>
+            </ul>
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>Assistance Technical Officer | Programmer</h4>
+            <h5>2019 - 2021</h5>
+            <p><em>Folasoft Technology, LAUTECH, Ogbomoso, Oyo State. NG.</em></p>
+            <p>
+            <ul>
+              <li>Assisted in developing innovative technology solutions</li>
+              <li>Contributed to customer satisfaction improvements</li>
+              <li>Supported project management activities</li>
+              <li>Participated in quality assurance processes</li>
+            </ul>
+            </p>
+          </div>
+          <div class="text-center mt-4">
+            <a href="myresume.pdf" class="btn btn-primary"><i class="bi bi-download"></i> Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Resume Section -->
 
   <!-- ======= Services Section ======= -->
   <section id="services" class="services">
-    <!-- ... existing services content ... -->
-  </section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>My Services</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-code"></i></div>
+            <h4><a href="">Web Development</a></h4>
+            <p>Custom web applications built with modern technologies and best practices.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-palette"></i></div>
+            <h4><a href="">Web Design</a></h4>
+            <p>User-centered design solutions that are both beautiful and functional.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-data"></i></div>
+            <h4><a href="">Data Analysis</a></h4>
+            <p>Transforming raw data into actionable insights and visualizations.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-laptop"></i></div>
+            <h4><a href="">IT Consulting</a></h4>
+            <p>Strategic technology advice to help your business grow and succeed.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-task"></i></div>
+            <h4><a href="">Scrum Master</a></h4>
+            <p>Agile project management to ensure efficient and effective development processes.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-support"></i></div>
+            <h4><a href="">Technical Support</a></h4>
+            <p>Comprehensive technical assistance and troubleshooting for your digital solutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Services Section -->
 
   <!-- ======= Portfolio Section ======= -->
   <section id="portfolio" class="portfolio">
-    <!-- ... existing portfolio content ... -->
-  </section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>My Works</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">AI</li>
+            <li data-filter=".filter-card">Web Development</li>
+            <li data-filter=".filter-web">Design</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container">
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=AI+Project" class="img-fluid" alt="AI Project">
+            <div class="portfolio-info">
+              <h4>AI Project 1</h4>
+              <p>Artificial Intelligence</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Web+App" class="img-fluid" alt="Web Application">
+            <div class="portfolio-info">
+              <h4>Web Application</h4>
+              <p>Development</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/3498db/ffffff?text=UI+Design" class="img-fluid" alt="UI Design">
+            <div class="portfolio-info">
+              <h4>UI Design</h4>
+              <p>Design</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/e74c3c/ffffff?text=Machine+Learning" class="img-fluid" alt="Machine Learning">
+            <div class="portfolio-info">
+              <h4>ML Project</h4>
+              <p>Machine Learning</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/2ecc71/ffffff?text=E-commerce" class="img-fluid" alt="E-commerce Website">
+            <div class="portfolio-info">
+              <h4>E-commerce Site</h4>
+              <p>Development</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="portfolio-wrap">
+            <img src="https://via.placeholder.com/400x300/f39c12/ffffff?text=Branding" class="img-fluid" alt="Brand Design">
+            <div class="portfolio-info">
+              <h4>Brand Design</h4>
+              <p>Design</p>
+              <div class="portfolio-links">
+                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Portfolio Section -->
 
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
-    <!-- ... existing contact content ... -->
-  </section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Contact Me</p>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-map"></i>
+            <h3>My Address</h3>
+            <p>Osun State, Nigeria</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-share-alt"></i>
+            <h3>Social Profiles</h3>
+            <div class="social-links">
+              <a href="https://www.x.com/emmanueljesufe2" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100070776412106" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/ul_ti_mate" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/emmanueljesufemioni" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Me</h3>
+            <p>oniemmanueljesufemi@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Me</h3>
+            <p>+234 902 9557 005</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Contact Section -->
 
   <!-- ======= Instagram Section ======= -->
-  <section id="instagram" class="portfolio">
-    <!-- ... existing instagram content ... -->
-  </section>
+  <section id="instagram" class="instagram-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Social Media</h2>
+        <p>Follow My Journey</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <p>Connect with me on social media to see my latest projects, insights, and updates.</p>
+          <div class="social-links justify-content-center mt-4">
+            <a href="https://www.instagram.com/ul_ti_mate" class="instagram" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.x.com/emmanueljesufe2" class="twitter" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/emmanueljesufemioni" class="linkedin" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Instagram Section -->
 
   <div class="credits">
     Designed by <a href="">Ultimate Technology</a>
   </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="external/main.js"></script>
+  <!-- Bootstrap & jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- Additional enhancements script -->
+  <!-- Main JS File -->
   <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+    // Mobile navigation toggle
+    document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+      document.querySelector('#navbar ul').classList.toggle('show');
     });
 
     // Navbar background on scroll
     window.addEventListener('scroll', function() {
       const navbar = document.getElementById('navbar');
       if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-        navbar.style.padding = '10px 0';
+        navbar.classList.add('scrolled');
       } else {
-        navbar.style.background = 'transparent';
-        navbar.style.padding = '20px 0';
+        navbar.classList.remove('scrolled');
       }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // Close mobile menu if open
+          document.querySelector('#navbar ul').classList.remove('show');
+          
+          // Scroll to target
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Update active nav link on scroll
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Portfolio filtering
+    document.querySelectorAll('#portfolio-flters li').forEach(filter => {
+      filter.addEventListener('click', function() {
+        // Update active filter
+        document.querySelectorAll('#portfolio-flters li').forEach(item => {
+          item.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+        
+        const filterValue = this.getAttribute('data-filter');
+        
+        // Show/hide portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
     });
   </script>
 
-  <!-- Your existing chatbot scripts -->
-  <script defer src="https://dashboard.chatflowapp.com/scripts/v1/pixel/3LHXHcfVYbqCoukD"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-607269915"></script>
   <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-607269915');
   </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
